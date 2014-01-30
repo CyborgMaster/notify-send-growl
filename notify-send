@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+system 'growlnotify -m hi -t hello -i mp3'
