@@ -1,3 +1,13 @@
 #!/usr/bin/env ruby
+require 'optparse'
 
-system 'growlnotify -m hi -t hello -i mp3'
+options = ARGV.getopts 'i:t:', 'hint:'
+options['t'] = ARGV.shift if ARGV.length > 1
+options['m'] = ARGV.shift
+
+opt_str = ''
+opt_str += %[ -m "#{options['m']}"] if options['m']
+opt_str += %[ -t "#{options['t']}"] if options['t']
+opt_str += %[ --image "#{options['i']}"] if options['i']
+
+system 'growlnotify' + opt_str
