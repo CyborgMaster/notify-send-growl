@@ -2,6 +2,7 @@
 require 'optparse'
 
 options = ARGV.getopts 'i:t:', 'hint:'
+options.delete 't' # -t is the timeout value, growl doesn't have this
 options['t'] = ARGV.shift if ARGV.length > 1
 options['m'] = ARGV.shift
 
